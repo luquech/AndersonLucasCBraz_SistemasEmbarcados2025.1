@@ -53,7 +53,7 @@ void app_main() {
               if (contador < 15){ 
               if ((contador + soma) <= 15){contador = contador +soma;}
               else if ((contador + soma) >15){
-                contador = (contador+soma) - 15;
+                contador = (contador+soma) - 16;
               }
             contadordebounce = 0;
             atualizar_leds();
