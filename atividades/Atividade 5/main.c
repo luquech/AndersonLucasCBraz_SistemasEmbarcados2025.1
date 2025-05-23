@@ -15,6 +15,8 @@ uint8_t contador = 0;
 uint8_t soma = 1;
 uint64_t ultimo_tempo_botao1 = 0;
 uint64_t ultimo_tempo_botao2 = 0;
+uint8_t ultimo_contador = 0;
+uint8_t ultima_soma = 1;
 const uint64_t debounce_time = 100000;
 
 void atualizar_leds() {
@@ -79,9 +81,17 @@ void app_main() {
     gpio_isr_handler_add(BOTAO1, botao1_handler, NULL);
     gpio_isr_handler_add(BOTAO2, botao2_handler, NULL);
 
+    printf("Contador: %d, Soma: %d\n", contador, soma);
+    
     while(1) {
         atualizar_leds();
-        printf("Contador: %d, Soma: %d\n", contador, soma);
-        vTaskDelay(pdMS_TO_TICKS(100));
+        
+        if (contador != ultimo_contador || soma != ultima_soma) {
+            printf("Contador: %d, Soma: %d\n", contador, soma);
+            ultimo_contador = contador;
+            ultima_soma = soma;
+        }
+        
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
