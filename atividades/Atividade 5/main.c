@@ -11,11 +11,11 @@
 #define BOTAO1 4
 #define BOTAO2 3
 
-volatile uint8_t contador = 0;
-volatile uint8_t soma = 1;
-volatile uint64_t ultimo_tempo_botao1 = 0;
-volatile uint64_t ultimo_tempo_botao2 = 0;
-const uint64_t debounce_time = 100000;
+uint8_t contador = 0;
+uint8_t soma = 1;
+uint64_t ultimo_tempo_botao1 = 0;
+uint64_t ultimo_tempo_botao2 = 0;
+uint64_t debounce_time = 100000;
 
 void atualizar_leds() {
     gpio_set_level(LED0, contador & 1);
