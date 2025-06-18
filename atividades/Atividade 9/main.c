@@ -79,7 +79,7 @@ const uint64_t debounce_time = 100000;
 static sdmmc_card_t* card;
 static bool sd_card_initialized = false;
 
-// Funções LCD (mantidas do código original)
+// Funções LCD
 void lcd_send_nibble(uint8_t data, uint8_t rs) {
     uint8_t nibble = (data & 0xF0) | rs | LCD_BACKLIGHT | 0x04;
     
